@@ -3,33 +3,37 @@
 <head>
   <meta charset="utf-8">
   
-  <title>迁移博客到git pages，采用hexo | 大憨的XXX</title>
+  <title>git使用小记 | 大憨的XXX</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原来的博客好久没更新，主机提供商换了IP，发了邮件，但是懒得看，才发现原来的网站挂了一个多月。刚开始建站写博客时，找wordpress的各种主题，弄的花里胡哨的。后来发现还是简洁点比较优美，也不想再买空间了，就迁移到github上吧。　
-1安装hexo
-sudo apt-get install npm　＃会自动安装nodejs
-sudo npm install hexo -g
+  <meta name="description" content="1配置github参考github官方文档https://help.github.com/articles/set-up-git/ 配置了HTTPS和SSH连接。
+2 在github中创建版本库略。可参见github官方文档https://help.github.com/articles/create-a-repo
+3 初始化本地版本库进入项目根目录，输入：
 
-解决/usr/bi">
+git init
+
+4 将项目文件添">
 <meta property="og:type" content="article">
-<meta property="og:title" content="迁移博客到git pages，采用hexo">
-<meta property="og:url" content="http://www.kechuandai.net/2015/11/02/迁移博客到git-pages，采用hexo/index.html">
+<meta property="og:title" content="git使用小记">
+<meta property="og:url" content="http://www.kechuandai.net/2015/11/02/git使用小记/index.html">
 <meta property="og:site_name" content="大憨的XXX">
-<meta property="og:description" content="原来的博客好久没更新，主机提供商换了IP，发了邮件，但是懒得看，才发现原来的网站挂了一个多月。刚开始建站写博客时，找wordpress的各种主题，弄的花里胡哨的。后来发现还是简洁点比较优美，也不想再买空间了，就迁移到github上吧。　
-1安装hexo
-sudo apt-get install npm　＃会自动安装nodejs
-sudo npm install hexo -g
+<meta property="og:description" content="1配置github参考github官方文档https://help.github.com/articles/set-up-git/ 配置了HTTPS和SSH连接。
+2 在github中创建版本库略。可参见github官方文档https://help.github.com/articles/create-a-repo
+3 初始化本地版本库进入项目根目录，输入：
 
-解决/usr/bi">
-<meta property="og:updated_time" content="2015-11-01T18:11:10.000Z">
+git init
+
+4 将项目文件添">
+<meta property="og:image" content="http://dahan.qiniudn.com/gitreset.png">
+<meta property="og:updated_time" content="2015-11-01T18:37:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迁移博客到git pages，采用hexo">
-<meta name="twitter:description" content="原来的博客好久没更新，主机提供商换了IP，发了邮件，但是懒得看，才发现原来的网站挂了一个多月。刚开始建站写博客时，找wordpress的各种主题，弄的花里胡哨的。后来发现还是简洁点比较优美，也不想再买空间了，就迁移到github上吧。　
-1安装hexo
-sudo apt-get install npm　＃会自动安装nodejs
-sudo npm install hexo -g
+<meta name="twitter:title" content="git使用小记">
+<meta name="twitter:description" content="1配置github参考github官方文档https://help.github.com/articles/set-up-git/ 配置了HTTPS和SSH连接。
+2 在github中创建版本库略。可参见github官方文档https://help.github.com/articles/create-a-repo
+3 初始化本地版本库进入项目根目录，输入：
 
-解决/usr/bi">
+git init
+
+4 将项目文件添">
   
     <link rel="alternative" href="/atom.xml" title="大憨的XXX" type="application/atom+xml">
   
@@ -210,11 +214,11 @@ sudo npm install hexo -g
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-迁移博客到git-pages，采用hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-git使用小记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/11/02/迁移博客到git-pages，采用hexo/" class="article-date">
-  	<time datetime="2015-11-01T17:32:13.000Z" itemprop="datePublished">2015-11-02</time>
+      <a href="/2015/11/02/git使用小记/" class="article-date">
+  	<time datetime="2015-11-01T18:37:18.000Z" itemprop="datePublished">2015-11-02</time>
 </a>
     </div>
   
@@ -227,7 +231,7 @@ sudo npm install hexo -g
         
   
     <h1 class="article-title" itemprop="name">
-      迁移博客到git pages，采用hexo
+      git使用小记
     </h1>
   
 
@@ -243,41 +247,59 @@ sudo npm install hexo -g
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>原来的博客好久没更新，主机提供商换了IP，发了邮件，但是懒得看，才发现原来的网站挂了一个多月。刚开始建站写博客时，找wordpress的各种主题，弄的花里胡哨的。后来发现还是简洁点比较优美，也不想再买空间了，就迁移到github上吧。　</p>
-<h1 id="1安装hexo">1安装hexo</h1><blockquote>
-<p>sudo apt-get install npm　＃会自动安装nodejs</p>
-<p>sudo npm install hexo -g</p>
-</blockquote>
-<h2 id="解决/usr/bin/env:_node:_没有那个文件或目录">解决/usr/bin/env: node: 没有那个文件或目录</h2><blockquote>
-<p>#hexo version<br>/usr/bin/env: node: 没有那个文件或目录</p>
-</blockquote>
-<p>产生的原因安装了nodejs，hexo是用node，所以查看下nodejs可执行文件在哪个目录下，新建一个软链接：</p>
+        <h2 id="1配置github">1配置github</h2><p>参考github官方文档<a href="https://help.github.com/articles/set-up-git/" target="_blank" rel="external">https://help.github.com/articles/set-up-git/</a> 配置了HTTPS和SSH连接。</p>
+<h2 id="2_在github中创建版本库">2 在github中创建版本库</h2><p>略。可参见github官方文档<a href="https://help.github.com/articles/create-a-repo" target="_blank" rel="external">https://help.github.com/articles/create-a-repo</a></p>
+<h2 id="3_初始化本地版本库">3 初始化本地版本库</h2><p>进入项目根目录，输入：</p>
 <blockquote>
-<p>#whereis nodejs<br>nodejs: /usr/bin/nodejs /usr/lib/nodejs /usr/bin/X11/nodejs /usr/include/nodejs /usr/share/man/man1/nodejs.1.gz</p>
-<p>#sudo ln -s /usr/bin/nodejs /usr/bin/node</p>
+<p>git init</p>
 </blockquote>
-<h1 id="2建本地博客">2建本地博客</h1><blockquote>
-<p>mkdir blog<br>hexo init kechuandai-hexo<br>cd kechuandai-hexo<br>npm install </p>
-</blockquote>
-<p>然后开启hexo server</p>
+<h2 id="4_将项目文件添加到版本库中">4 将项目文件添加到版本库中</h2><p>还是在项目根目录中输入：</p>
 <blockquote>
-<p>hexo server</p>
+<p>git add .</p>
 </blockquote>
-<p>在浏览器中输入：<a href="http://127.0.0.1:4000" target="_blank" rel="external">http://127.0.0.1:4000</a></p>
-<p>如果打开则成功。</p>
-<h1 id="3本地添加文章">3本地添加文章</h1><blockquote>
-<p>hexo new 文章名<br>hexo generate<br>hexo deploy</p>
+<h2 id="5_添加项目改动说明">5 添加项目改动说明</h2><p>还是在项目根目录中输入：</p>
+<blockquote>
+<p>git commit -m “第一次提交，创建项目。”</p>
 </blockquote>
-<h1 id="4部署到github上">4部署到github上</h1><h2 id="4-1_新建一个git_pages_repo">4.1 新建一个git　pages　repo</h2><p>名字必须命名为yourname.github.io<br>参考：<a href="https://pages.github.com/" target="_blank" rel="external">https://pages.github.com/</a></p>
-<h2 id="4-2_配置_config-yml文件">4.2 配置_config.yml文件</h2><p>参考：<a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">https://hexo.io/docs/deployment.html</a><br>注意：</p>
-<ul>
-<li>type、repo、branch后面的配置项前要有空格；</li>
-<li>repo用https地址；</li>
-<li>github要设置好SSH，<a href="https://help.github.com/articles/generating-ssh-keys/。" target="_blank" rel="external">https://help.github.com/articles/generating-ssh-keys/。</a><figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># Deployment</span></span><br><span class="line"><span class="preprocessor">## Docs: http:<span class="comment">//hexo.io/docs/deployment.html</span></span></span><br><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: https:<span class="comment">//github.com/bigfool/bigfool.github.io.git</span></span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>我被这个空格坑了，如果配置后使用hexo deploy，绝对是这个文件配置出错。</p>
-<h2 id="4-3_使用hexo_deploy开始部署">4.3 使用hexo deploy开始部署</h2><h1 id="5域名设置">5域名设置</h1><p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/" target="_blank" rel="external">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a></p>
+<h2 id="6_将本地仓库与github项目仓库xxx相关联">6 将本地仓库与github项目仓库xxx相关联</h2><p>在本地项目仓库的根目录中，输入：</p>
+<blockquote>
+<p>git remote add origin git@github.com:yourname/xxx.git</p>
+</blockquote>
+<h2 id="7_将本地库的内容同步到github上">7 将本地库的内容同步到github上</h2><blockquote>
+<p>git push -u origin master</p>
+</blockquote>
+<p><em>注意:</em>由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
+<p>如果发生了这样的错误： <code>无法推送一些引用到 &#39;git@github.com:yourname/xxx.git&#39;
+提示：更新被拒绝，因为远程版本库包含您本地尚不存在的提交。这通常是因为另外
+提示：一个版本库已向该引用进行了推送。再次推送前，您可能需要先整合远程变更
+提示：（如 &#39;git pull ...&#39;）。</code></p>
+<p>则使用强行更新 +master:</p>
+<blockquote>
+<p>git push -u origin +master</p>
+</blockquote>
+<h2 id="8_将本地库与github项目仓库相关联的另外一种办法">8 将本地库与github项目仓库相关联的另外一种办法</h2><p>在本地仓库的根目录中，输入：</p>
+<blockquote>
+<p>git clone <a href="https://github.com/yourname/xxx.git" target="_blank" rel="external">https://github.com/yourname/xxx.git</a></p>
+</blockquote>
+<p>进入xxx目录中，将所有文件复制到上一层目录中：</p>
+<blockquote>
+<p>cd xxx</p>
+<p>cp -r * ../</p>
+</blockquote>
+<p>回到本地仓库根目录，删除xxx目录的所有文件</p>
+<blockquote>
+<p>rm -rf xxx/</p>
+</blockquote>
+<p>这样也能将本地仓库和远程仓库相关联，接下来可以添加文件到本地仓库，再提交内容到github。</p>
+<h2 id="8_git的回滚操作">8 git的回滚操作</h2><h3 id="8-1_先使用git_log查看日志，找到想要回滚的版本">8.1 先使用git log查看日志，找到想要回滚的版本</h3><p>在项目目录中，输入</p>
+<blockquote>
+<p>git log</p>
+</blockquote>
+<p>结果如下图所示： <img src="http://dahan.qiniudn.com/gitreset.png" alt="enter image description here"></p>
+<h3 id="8-2_再使用git_reset回滚到指定版本">8.2 再使用git reset回滚到指定版本</h3><blockquote>
+<p>git reset –hard 4bb7bbc07f4b3792b48a6001bdfcc2b694cd3c81</p>
+</blockquote>
+<p>即可回滚成功。</p>
 
       
     </div>
@@ -287,18 +309,18 @@ sudo npm install hexo -g
     
 <nav id="article-nav">
   
-    <a href="/2015/11/02/ubuntu下Android开发环境搭建/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/02/杂七杂八工具收集/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          ubuntu下Android开发环境搭建
+          杂七杂八工具收集
         
       </div>
     </a>
   
   
-    <a href="/2015/11/01/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test</div>
+    <a href="/2015/11/02/2014年读书统计/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2014年读书统计</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -327,7 +349,7 @@ sudo npm install hexo -g
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="迁移博客到git-pages，采用hexo" data-title="迁移博客到git pages，采用hexo" data-url="http://www.kechuandai.net/2015/11/02/迁移博客到git-pages，采用hexo/"></div>
+	<div class="ds-thread" data-thread-key="git使用小记" data-title="git使用小记" data-url="http://www.kechuandai.net/2015/11/02/git使用小记/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android取证基础知识 | 大憨的XXX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1 常用命令df -h 查看挂载的设备 dmesg 用来显示开机信息，kernel会将开机信息存储在ring buffer中。您若是开机时来不及查看信息，可利用dmesg来查看。开机信息亦保存在/var/log目录中，名称为dmesg的文件里。 开机时候的硬件检测信息在这里面存着。
+2 数据恢复工具sleuthkit先了解了，以后再深入学习使用。
+
+sudo apt-get install slu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android取证基础知识">
+<meta property="og:url" content="http://www.kechuandai.net/2015/11/02/Android取证基础知识/index.html">
+<meta property="og:site_name" content="大憨的XXX">
+<meta property="og:description" content="1 常用命令df -h 查看挂载的设备 dmesg 用来显示开机信息，kernel会将开机信息存储在ring buffer中。您若是开机时来不及查看信息，可利用dmesg来查看。开机信息亦保存在/var/log目录中，名称为dmesg的文件里。 开机时候的硬件检测信息在这里面存着。
+2 数据恢复工具sleuthkit先了解了，以后再深入学习使用。
+
+sudo apt-get install slu">
+<meta property="og:image" content="http://dahan.qiniudn.com/2014.8.7forensics1.png">
+<meta property="og:image" content="http://dahan.qiniudn.com/2014.8.7forensics2.png">
+<meta property="og:image" content="http://dahan.qiniudn.com/2014.8.7forensics3.png">
+<meta property="og:image" content="http://dahan.qiniudn.com/2014.8.7forensics4.png">
+<meta property="og:image" content="http://dahan.qiniudn.com/2014.8.7forensics5.png">
+<meta property="og:updated_time" content="2015-11-01T18:33:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android取证基础知识">
+<meta name="twitter:description" content="1 常用命令df -h 查看挂载的设备 dmesg 用来显示开机信息，kernel会将开机信息存储在ring buffer中。您若是开机时来不及查看信息，可利用dmesg来查看。开机信息亦保存在/var/log目录中，名称为dmesg的文件里。 开机时候的硬件检测信息在这里面存着。
+2 数据恢复工具sleuthkit先了解了，以后再深入学习使用。
+
+sudo apt-get install slu">
+  
+    <link rel="alternative" href="/atom.xml" title="大憨的XXX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">憨哥</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">谁会来买kechuandai.net啊</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">憨哥</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="null" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">憨哥</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">谁会来买kechuandai.net啊</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Android取证基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/02/Android取证基础知识/" class="article-date">
+  	<time datetime="2015-11-01T18:30:54.000Z" itemprop="datePublished">2015-11-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android取证基础知识
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1_常用命令">1 常用命令</h2><p>df -h 查看挂载的设备 dmesg 用来显示开机信息，kernel会将开机信息存储在ring buffer中。您若是开机时来不及查看信息，可利用dmesg来查看。开机信息亦保存在/var/log目录中，名称为dmesg的文件里。 开机时候的硬件检测信息在这里面存着。</p>
+<h2 id="2_数据恢复工具sleuthkit">2 数据恢复工具sleuthkit</h2><p>先了解了，以后再深入学习使用。</p>
+<blockquote>
+<p>sudo apt-get install sluthkit sudo apt-get install autospy</p>
+</blockquote>
+<p>查看某个分区命令：</p>
+<blockquote>
+<p>sudo fsstat /dev/sdc sudo mmls /dev sdb</p>
+</blockquote>
+<h2 id="3_Android数据存储">3 Android数据存储</h2><p>持久数据存储的五种存储方式： - 共享优先 - 内部存储 - 外部存储 - SQLite - 网络</p>
+<p>Android应用一般把数据存储在两个地方：内部存储和外部存储。应用在安装的时候会在内部存储的</p>
+<h3 id="3-1_共享优先">3.1 共享优先</h3><p>Shared Preference是一种简单的、轻量级的名称/值对（VNP)机制，用于保存原始应用程序数据，最常见的是用户的应用程序首选项。存储格式为XML，存储的类型有： - boolean - folat 单精度32位IEEE 754浮点数 - int - long - strings 通常是utf-8编码</p>
+<p>比如美团的客户端： <img src="http://dahan.qiniudn.com/2014.8.7forensics1.png" alt="Alt text"></p>
+<p>其中loginStroe.xml内容如下：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span> standalone=<span class="string">'yes'</span> ?&gt;</span><br><span class="line">&lt;map&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"bindedBankCard"</span> <span class="keyword">value</span>=<span class="string">"0"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"hasPaymentPassword"</span> <span class="keyword">value</span>=<span class="string">"0"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"saveAmount"</span>&gt;<span class="number">0.0</span>&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"avatarurl"</span>&gt;&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">long</span> name=<span class="string">"id"</span> <span class="keyword">value</span>=<span class="string">"32793294"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"username"</span>&gt;大憨<span class="number">846</span>&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"token"</span>&gt;×××××××××××××××××××&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"value"</span>&gt;<span class="number">0.0</span>&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"growthlevel"</span> <span class="keyword">value</span>=<span class="string">"2"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"hasPassword"</span> <span class="keyword">value</span>=<span class="string">"1"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"saveTimes"</span> <span class="keyword">value</span>=<span class="string">"0"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"pointvalue"</span> <span class="keyword">value</span>=<span class="string">"164"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"growthvalue"</span> <span class="keyword">value</span>=<span class="string">"1167"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"SID"</span>&gt;××××××××××××××××&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">null</span> name=<span class="string">"al"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"isAppUser"</span> <span class="keyword">value</span>=<span class="string">"1"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"oauth_login_result"</span>&gt;&#123;&amp;quot;a&amp;quot;:&amp;quot;tencent&amp;quot;,&amp;quot;b&amp;quot;:&amp;quot;E765B31B8DB83B6309D41A472ED9093D&amp;quot;,&amp;quot;d&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;c&amp;quot;:<span class="number">1401330213950</span>&#125;&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"email"</span>&gt;&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"avatartype"</span> <span class="keyword">value</span>=<span class="string">"0"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"reallevel"</span> <span class="keyword">value</span>=<span class="string">"2"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"loginTimes"</span> <span class="keyword">value</span>=<span class="string">"19"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">int</span> name=<span class="string">"bindedMobile"</span> <span class="keyword">value</span>=<span class="string">"1"</span> /&gt;</span><br><span class="line">&lt;<span class="keyword">string</span> name=<span class="string">"mobile"</span>&gt;<span class="number">135</span>****×××××××&lt;/<span class="keyword">string</span>&gt;</span><br><span class="line">&lt;/map&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-2_内部存储">3.2 内部存储</h3><p>在内部存储器上的/data/data目录下建立一个以应用程序包名为名字的子目录存储应用的数据。 最常见的应用程序数据标准目录为： <strong>表1 /data/data/&lt;软件包名称&gt;子目录</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">目录</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">shared_prefs</td>
+<td style="text-align:left">以XML格式存储的共享优先目录</td>
+</tr>
+<tr>
+<td style="text-align:left">lib</td>
+<td style="text-align:left">自定义的库文件</td>
+</tr>
+<tr>
+<td style="text-align:left">files</td>
+<td style="text-align:left">开发者存储的文件</td>
+</tr>
+<tr>
+<td style="text-align:left">cache</td>
+<td style="text-align:left">应用程序缓存文件</td>
+</tr>
+<tr>
+<td style="text-align:left">databases</td>
+<td style="text-align:left">SQLite数据库和日志文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-3_外部存储">3.3 外部存储</h3><h3 id="3-4_SQLite">3.4 SQLite</h3><p>Android应用的SQLite文件通常存储在内部存储器的/data/data/&lt;应用程序包名&gt;/databases目录下，属于应用私有的，只能被创建他们的应用程序访问。但是，对于在其他地方创建的数据库没有设置任何限制。 <img src="http://dahan.qiniudn.com/2014.8.7forensics2.png" alt="Alt text"></p>
+<p>如何将其拷贝出来? 这主要是因为权限问题，adb shell中使用命令su root转为root权限，然后修改文件夹和文件的权限为777</p>
+<blockquote>
+<p>adb shell su root chmod 777 /data/data/com.sankuai.meituan/databases chmod 777 /data/data/com.sankuai.meituan/databases/meituan.db</p>
+</blockquote>
+<p>再在Ubutud的另外一个终端中输入：</p>
+<blockquote>
+<p>adb pull /data/data/com.sankuai.meituan/databases/meituan.db</p>
+</blockquote>
+<p>将meituan.db拷贝到了Ubuntu终端中的当前目录</p>
+<p>拷贝出来后，可以使用一下sqlite3命令打开</p>
+<blockquote>
+<p>sqlite3 dbname.db</p>
+</blockquote>
+<p>然后可以用SQL语句查看数据库</p>
+<p><img src="http://dahan.qiniudn.com/2014.8.7forensics3.png" alt="Alt text"></p>
+<p>或者使用图形界面的SQLite管理工具，在Ubuntu下，大憨推荐使用SQLiteMan。</p>
+<h2 id="4_内核、系统和应用日志">4 内核、系统和应用日志</h2><h3 id="4-1_Linux内核日志">4.1 Linux内核日志</h3><p>使用命令dmesg查看。</p>
+<h3 id="4-2_Logcat">4.2 Logcat</h3><p>Logcat 显示系统更新和应用程序调试信息 <strong>查看无线电日志</strong>：</p>
+<blockquote>
+<p>adb shell logcat -b radio</p>
+</blockquote>
+<p>这些日志有如下信息： - 事件时间（以UNIX时间格式表达） - 蜂窝调制解调器进行通信使所使用的AT命令 - 接收者、时间以及编码的短信消息 - 终端设备的蜂窝IP地址、网络以及地点信息 - 无线通信服务提供商信息</p>
+<p><em>tips Unix 时间转标准时间:</em></p>
+<blockquote>
+<p>date -d @1407199900</p>
+</blockquote>
+<p><img src="http://dahan.qiniudn.com/2014.8.7forensics4.png" alt="Alt text"></p>
+<p><strong>查看事件日志</strong></p>
+<blockquote>
+<p>adb shell logcat -b event</p>
+</blockquote>
+<h3 id="4-3_dumpsys">4.3 dumpsys</h3><p>dumpsys提供关于服务、存储及系统其他方面很细节的信息。</p>
+<blockquote>
+<p>dumpsys [Option] [package_name | pid] Option: meminfo 显示内存信息 cpuinfo 显示CPU信息 account 显示accounts信息,感觉这个最有用了 activity 显示所有的activities的信息 window 显示键盘，窗口和它们的关系 wifi 显示wifi信息 location 显示位置信息，有基站和GPS的 更多信息： 1 SurfaceFlinger 2 accessibility 3 account 4 activity 5 alarm 6 appwidget 7 audio 8 backup 9 battery 10 batteryinfo 11 bluetooth 12 bluetooth_a2dp 13 clipboard 14 connectivity 15 content 16 cpuinfo 17 device_policy 18 devicestoragemonitor 19 diskstats 20 dropbox 21 entropy 22 ethernet 23 hardware 24 input_method 25 iphonesubinfo 26 isms 27 keybar 28 location 29 media.audio_flinger 30 media.audio_policy 31 media.camera 32 media.player 33 meminfo 34 mount 35 netstat 36 network_management 37 notification 38 package 39 permission 40 phone 41 power 42 search 43 sensorservice 44 simphonebook 45 statusbar 46 telephony.registry 47 throttle 48 uimode 49 usagestats 50 vibrator 51 wallpaper 52 wifi 53 window</p>
+</blockquote>
+<h3 id="4-4_dumpstate">4.4 dumpstate</h3><p>显示了很多调试信息和系统信息。 dumpstate信息：</p>
+<table><br>  <thead><br>    <tr><br>      <th align="left"><br>        分段区域<br>      </th><br><br>      <th align="left"><br>        文件或者命令<br>      </th><br><br>      <th align="left"><br>        备注<br>      </th><br>    </tr><br>  </thead><br><br>  <tbody><br>    <tr><br>      <td align="left"><br>        Strack traces<br>      </td><br><br>      <td align="left"><br>        没有<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Device info<br>      </td><br><br>      <td align="left"><br>        没有<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        System<br>      </td><br><br>      <td align="left"><br>        没有<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Memory info<br>      </td><br><br>      <td align="left"><br>        /proc/meminfo<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Cpu info<br>      </td><br><br>      <td align="left"><br>        top -n 1 -d 1 -m 30 -t<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Procrank<br>      </td><br><br>      <td align="left"><br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Virtual memory stats<br>      </td><br><br>      <td align="left"><br>        /proc/vmstat<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Vmalloc info<br>      </td><br><br>      <td align="left"><br>        /proc/vmallocinfo<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Slab info<br>      </td><br><br>      <td align="left"><br>        /proc/slabinfo<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Zone info<br>      </td><br><br>      <td align="left"><br>        /proc/zoneinfo<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        System log<br>      </td><br><br>      <td align="left"><br>        logcat -v time -d <em>:v<br>      </em></td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Envent log<br>      </td><br><br>      <td align="left"><br>        logcat -b envents -v time -d :v<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Radio log<br>      </td><br><br>      <td align="left"><br>        logcat -b radio -v time -d *:v<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Network interfaces<br>      </td><br><br>      <td align="left"><br>        netcfg<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Network routes<br>      </td><br><br>      <td align="left"><br>        /proc/net/route<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Arp cache<br>      </td><br><br>      <td align="left"><br>        /proc/net/arp<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Dump Wi-Fi firmware log<br>      </td><br><br>      <td align="left"><br>        su root dhutil -i eth0 upload/data/local/tmp/ wlan_crash.dump<br>      </td><br><br>      <td align="left"><br>        命令未成功<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        System propertiess<br>      </td><br><br>      <td align="left"><br>        没有<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Kernel log<br>      </td><br><br>      <td align="left"><br>        dmesg<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Kernel wakelocks<br>      </td><br><br>      <td align="left"><br>        /proc/wakelocks<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Kernel cpufreq<br>      </td><br><br>      <td align="left"><br>        /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Vold dump<br>      </td><br><br>      <td align="left"><br>        vdc dump<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Secure containers<br>      </td><br><br>      <td align="left"><br>        vdc asec list<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Processes<br>      </td><br><br>      <td align="left"><br>        ps -p<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Processes and threads<br>      </td><br><br>      <td align="left"><br>        ps -t -p -p<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Librank<br>      </td><br><br>      <td align="left"><br>        (librank)<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Binder failed transaction log<br>      </td><br><br>      <td align="left"><br>        /proc/binder/failed_transcation_log<br>      </td><br><br>      <td align="left"><br>        华为M1未发现<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Binder transaciton log<br>      </td><br><br>      <td align="left"><br>        /proc/binder/transcation_log<br>      </td><br><br>      <td align="left"><br>        华为M1未发现<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Binder transcations<br>      </td><br><br>      <td align="left"><br>        /proc/binder/transcations<br>      </td><br><br>      <td align="left"><br>        华为M1未发现<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Binder stats<br>      </td><br><br>      <td align="left"><br>        /proc/binder/stats<br>      </td><br><br>      <td align="left"><br>        华为M1未发现<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Binder process stat<br>      </td><br><br>      <td align="left"><br>        sh -c cat/proc/binder/proc/ -p<br>      </td><br><br>      <td align="left"><br>        华为M1未发现<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        File System and free space<br>      </td><br><br>      <td align="left"><br>        df<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Package settings<br>      </td><br><br>      <td align="left"><br>        /data/system/packages.xml<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Package uid errors<br>      </td><br><br>      <td align="left"><br>        /data/system/uiderrors.txt<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Last kmsg<br>      </td><br><br>      <td align="left"><br>        /proc/last_kmsg<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Last radio log<br>      </td><br><br>      <td align="left"><br>        parse_radio_log/proc/last_radio_log<br>      </td><br><br>      <td align="left"><br>        华为M1未发现<br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Last panic console<br>      </td><br><br>      <td align="left"><br>        /data/dontpanic/apanic_console<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Last panic threads<br>      </td><br><br>      <td align="left"><br>        /data/dontpanic/apanic_threads<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Blocked process wait<br>      </td><br><br>      <td align="left"><br>        没有<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        channels<br>      </td><br><br>      <td align="left"><br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Backlights<br>      </td><br><br>      <td align="left"><br>        没有<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br><br>    <tr><br>      <td align="left"><br>        Dumpsys<br>      </td><br><br>      <td align="left"><br>        dumpsys<br>      </td><br><br>      <td align="left"><br>      </td><br>    </tr><br>  </tbody><br></table>
+
+<h3 id="4-5_bugreporter">4.5 bugreporter</h3><p>将logcat、dumpsys和dumpstate输出结合在一起，提交调试报告。 可将结果重定向到一个文件中，以便分析。</p>
+<h2 id="5_RAM进程内存转储">5 RAM进程内存转储</h2><p>在POSIX兼容的平台上，SIGUSR1和SIGUSR2是发送给一个进程的信号，它表示了用户定义的情况。它们的符号常量在头文件signal.h中定义。在不同的平台上，信号的编号可能发生变化。</p>
+<p>Android将应用程序所使用的内存转储成为一个文件的机制：向该应用程序发送一个特别的信号（SIGUSR1），信号编号为1294。 具体操作步骤： S1 改变转储结果所在目录的访问权限：</p>
+<blockquote>
+<p>adb shell su root chmod 777 /data/misc</p>
+</blockquote>
+<p>S2 在获取应用程序的进程号，比如美团客户端的：</p>
+<blockquote>
+<p>adb shell ps | grep meituan</p>
+</blockquote>
+<p><img src="http://dahan.qiniudn.com/2014.8.7forensics5.png" alt="Alt text"></p>
+<p>其PID为14606</p>
+<p>S3 使用kill命令向进程发送信号：</p>
+<blockquote>
+<p>kill -10 14606</p>
+</blockquote>
+<p>可是没有成功，后来查询stack overflow才知道，在新Android的新平台上已经舍弃了这种方法。 可以使用MAT。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/02/Kali更新Metaploit失败解决办法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Kali更新Metaploit失败解决办法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/11/02/使用drozer对Android应用进行安全评估/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用drozer对Android应用进行安全评估</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android取证基础知识" data-title="Android取证基础知识" data-url="http://www.kechuandai.net/2015/11/02/Android取证基础知识/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 憨哥
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
