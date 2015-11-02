@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next   use-motion ">
+<html class="theme-next ">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -21,23 +21,14 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
 
 
 
 
-  
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  
 
+<link href="//font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="//main.css?v=" rel="stylesheet" type="text/css" />
 
 
 
@@ -46,7 +37,6 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
 
@@ -94,9 +84,9 @@
 
 <script type="text/javascript" id="hexo.configuration">
   var CONFIG = {
-    scheme: 'Mist',
-    sidebar: 'post',
-    motion: true
+    scheme: '',
+    sidebar: '',
+    motion: 
   };
 </script>
 
@@ -149,43 +139,6 @@
 <nav class="site-nav">
   
 
-  
-    <ul id="menu" class="menu ">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首頁
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            歸檔
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            標籤
-          </a>
-        </li>
-      
-
-      
-      
-    </ul>
   
 
   
@@ -441,25 +394,16 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目錄
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            本站概覽
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" src="/images/default_avatar.jpg" alt="憨哥" itemprop="image"/>
+          <img class="site-author-image" src="//default_avatar.jpg" alt="憨哥" itemprop="image"/>
           <p class="site-author-name" itemprop="name">憨哥</p>
         </div>
         <p class="site-description motion-element" itemprop="description">一辈子太长有做个有趣的人</p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
-            <a href="/archives">
+            <a href="/">
               <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">文章</span>
             </a>
@@ -473,10 +417,10 @@
           </div>
 
           <div class="site-state-item site-state-tags">
-            <a href="/tags">
+            
               <span class="site-state-item-count">0</span>
               <span class="site-state-item-name">標籤</span>
-              </a>
+              
           </div>
 
         </nav>
@@ -496,23 +440,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用drozer对Android应用进行安全评估的测试例子"><span class="nav-number">1.</span> <span class="nav-text">使用drozer对Android应用进行安全评估的测试例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1_在Android设备上安装使用sieve"><span class="nav-number">1.1.</span> <span class="nav-text">1 在Android设备上安装使用sieve</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2_获取App_Package信息"><span class="nav-number">1.2.</span> <span class="nav-text">2 获取App Package信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1获取获取Android设备上的所有的安装的App的包名"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1获取获取Android设备上的所有的安装的App的包名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2获取sieve的一些基本信息"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2获取sieve的一些基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3Itentify_the_Attack_Surface(确定攻击面？)"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3Itentify the Attack Surface(确定攻击面？)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4进一步获取Attack_Surface的信息"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4进一步获取Attack Surface的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5启动Activities"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5启动Activities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6从Content_Provider中获取信息"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6从Content Provider中获取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-1查找可以访问content_provider的URI（数据泄漏）"><span class="nav-number">1.2.6.1.</span> <span class="nav-text">2.6.1查找可以访问content provider的URI（数据泄漏）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-2进行SQL注入"><span class="nav-number">1.2.6.2.</span> <span class="nav-text">2.6.2进行SQL注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-3从File_System-backed_Content_Providers获取信息"><span class="nav-number">1.2.6.3.</span> <span class="nav-text">2.6.3从File System-backed Content Providers获取信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-4检查Content_Provider的脆弱性"><span class="nav-number">1.2.6.4.</span> <span class="nav-text">2.6.4检查Content Provider的脆弱性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-7和Services交互"><span class="nav-number">1.2.7.</span> <span class="nav-text">2.7和Services交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-8_其他常用模块"><span class="nav-number">1.2.8.</span> <span class="nav-text">2.8 其他常用模块</span></a></li></ol></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
       
 
     </div>
@@ -541,7 +468,7 @@
 <div class="theme-info">
   主題 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT
   </a>
 </div>
 
@@ -553,7 +480,7 @@
     <div class="back-to-top"></div>
   </div>
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="//jquery/index.js?v=2.1.3"></script>
 
   
   
@@ -568,23 +495,20 @@
   
 
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+  <script type="text/javascript" src="//helpers.js?v="></script>
+  <script type="text/javascript" src="//velocity/velocity.min.js"></script>
+<script type="text/javascript" src="//velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="//motion.js?v=" id="motion.global"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
-
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="//fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="//jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
   
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+<script type="text/javascript" src="//bootstrap.scrollspy.js?v=" id="bootstrap.scrollspy.custom"></script>
 
 
 <script type="text/javascript" id="sidebar.toc.highlight">
@@ -745,7 +669,7 @@
 
 
 
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
+  <script type="text/javascript" src="//bootstrap.js"></script>
 
   
   
