@@ -167,6 +167,164 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-Ubuntu14-04Drozer工具的安装和使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/02/Ubuntu14-04Drozer工具的安装和使用/" class="article-date">
+  	<time datetime="2015-11-01T18:25:58.000Z" itemprop="datePublished">2015-11-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/02/Ubuntu14-04Drozer工具的安装和使用/">Ubuntu14.04Drozer工具的安装和使用</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Ubuntu14-04_Drozer工具的安装和使用">Ubuntu14.04 Drozer工具的安装和使用</h1><h1 id="1Drozer工具简介">1Drozer工具简介</h1><p>略</p>
+<h1 id="2工具的安装">2工具的安装</h1><h2 id="2-1安装前提">2.1安装前提</h2><p>确保PC机的操作系统里面安装了:</p>
+<ul>
+<li>JRE或者JDK</li>
+<li>Android SDK</li>
+</ul>
+<p>64位的Ubuntu14.04需要安装IA32-libs。 确保adb和java已经在系统环境变量PATH中。</p>
+<h2 id="2-2Ubuntu安装Drozer">2.2Ubuntu安装Drozer</h2><p>可以在官网<a href="https://www.mwrinfosecurity.com/products/drozer/community-edition/" target="_blank" rel="external">https://www.mwrinfosecurity.com/products/drozer/community-edition/</a>下载.deb的安装包直接安装;也可以下载.egg的python包安装，此时需要自己手动下载安装protobuf和twisted包。我是直接下载的.deb包安装的。</p>
+<h2 id="2-3手机或者模拟器安装代理agent-apk">2.3手机或者模拟器安装代理agent.apk</h2><p>下载agent.apk，使用命令安装：</p>
+<blockquote>
+<p>adb install agent.apk</p>
+</blockquote>
+<h1 id="3_Drozer的使用">3 Drozer的使用</h1><h2 id="3-1建立Drozer_Console和Dorzer_Agent的连接，开启一个会话">3.1建立Drozer Console和Dorzer Agent的连接，开启一个会话</h2><p><strong>Step1</strong>建立端口转发，Drozer默认使用31415端口。 如下命令：将Ubuntu的TCP端口31415的所有数据转发到手机上31415端口:</p>
+<blockquote>
+<p>adb forward tcp:31415 tcp:31415</p>
+</blockquote>
+<p><strong>Step2</strong>在Android设备上开启Agent server。 选择”Enbeded Server“那一项，然后选择”Enadble“开启Agent server。</p>
+<p><img src="http://dahan.qiniudn.com/2014.7.22drozer1.png" alt="Alt text"></p>
+<p><img src="http://dahan.qiniudn.com/2014.7.22drozer2.png" alt="Alt text"></p>
+<p><strong>Step3</strong>使用drozer Console连接Agent server。 在Ubuntu的终端中输入命令：</p>
+<blockquote>
+<p>drozer console connect</p>
+</blockquote>
+<p>打开效果如下： <img src="http://dahan.qiniudn.com/2014.7.22drozer3.png" alt="Alt text"></p>
+<h2 id="3-2Drozer_Console的命令">3.2Drozer Console的命令</h2><p>Drozer Console是一个命令行环境，和bash shell相似。 Drozer Console提供了一系列的评估Android设备安全性的模块，每个模块有很明确的功能。 下图是自己根据官方文档翻译出的命令描述，可能不准确：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">run MODULE</td>
+<td style="text-align:left">运行一个drozer模块</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">list或者ls</td>
+<td style="text-align:left">显示在当前会话中可被执行的所有drozer模块</td>
+<td style="text-align:left">隐藏你没有权限执行的模块</td>
+</tr>
+<tr>
+<td style="text-align:left">shell</td>
+<td style="text-align:left">在设备上的Agent进程上下文中开启一个交互式的Linux shell</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">cd</td>
+<td style="text-align:left">跳转命令，挂载到指定的模块空间</td>
+<td style="text-align:left">可以避免重复输入模块的全名</td>
+</tr>
+<tr>
+<td style="text-align:left">clean</td>
+<td style="text-align:left">清除drozer保存在Android设备上的临时文件</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">contributors</td>
+<td style="text-align:left">列出为drozer框架做出贡献的人名</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">echo</td>
+<td style="text-align:left">在console中显示文本</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">exit</td>
+<td style="text-align:left">结束drozer会话</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">help ABOUT</td>
+<td style="text-align:left">显示某一个命令或者模块（ABOUT）的帮助</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">load</td>
+<td style="text-align:left">加载并且顺序运行一个包含一系列drozer命令的文件</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">module</td>
+<td style="text-align:left">从互联网上寻找和安装drozer的扩展模块</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">permissions</td>
+<td style="text-align:left">显示drozer Agent获得的权限</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">set</td>
+<td style="text-align:left">赋值运算，将一个数值存到一个变量中，这个变量可以做环境变量</td>
+<td style="text-align:left">如：set HOST=193.168.1.1</td>
+</tr>
+<tr>
+<td style="text-align:left">unset</td>
+<td style="text-align:left">取消赋值</td>
+<td style="text-align:left">……</td>
+</tr>
+</tbody>
+</table>
+<p>以下图片先用list显示了所有模块，再用cd命令进入scanner模块，然后使用了set、echo、unset命令 <img src="http://dahan.qiniudn.com/2014.7.22drozer4.png" alt="Alt text"></p>
+<p>下图是官方文档的命令说明： <img src="http://dahan.qiniudn.com/2014.7.22drozer5.png" alt="Alt text"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-Android逆向常用工具说明" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
