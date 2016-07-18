@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>webview file</title>
+<meta charset="utf-8">
+</head>
+<body>
+<script>
+function loadXMLDoc()
+{
+    var arm = "file:///etc/hosts";
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+        xmlhttp=new XMLHttpRequest();
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        //alert("status is"+xmlhttp.status);
+        if (xmlhttp.readyState==4)
+        {
+              console.log(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.open("GET",arm);
+    xmlhttp.send(null);
+}
+loadXMLDoc();
+</script>
+</body>
+</html>
